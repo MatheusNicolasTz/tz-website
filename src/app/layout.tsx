@@ -44,11 +44,13 @@ export const metadata: Metadata = {
       "500M+ YouTube views driven. Thumbnails, logos, landing pages, and Adventure AI.",
     type: "website",
     locale: "en_US",
+    images: ["/logo.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "TzDev — Matheus Nicolas",
     description: "500M+ YouTube views driven. Designer & developer.",
+    images: ["/logo.png"],
   },
 };
 

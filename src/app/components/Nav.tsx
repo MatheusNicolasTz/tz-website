@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Nav() {
@@ -32,10 +33,20 @@ export default function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <a
           href="#top"
-          className="flex items-baseline gap-1.5 font-serif text-xl leading-none text-[--color-fg]"
+          className="flex items-center gap-2.5 text-[--color-fg]"
           aria-label="TzDev — home"
         >
-          Tz<span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[--color-muted]">Dev</span>
+          <Image
+            src="/logo.png"
+            alt="TzDev"
+            width={36}
+            height={36}
+            priority
+            className="h-9 w-9 object-contain"
+          />
+          <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[--color-muted] sm:inline">
+            TzDev
+          </span>
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">

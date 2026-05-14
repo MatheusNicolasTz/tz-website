@@ -34,6 +34,11 @@ export default function About() {
               mode — fast, intentional, and with identity.
             </p>
             <p>
+              On the AI side, I <strong className="text-[--color-fg]">fine-tune pre-trained models</strong> and run
+              advanced workflows in <strong className="text-[--color-fg]">ComfyUI</strong> — building custom pipelines for
+              image generation, identity and style transfer.
+            </p>
+            <p>
               Good product is the sum of aesthetics, performance, and story.
             </p>
             <p className="border-l-2 border-[--color-fg] pl-4 font-serif text-2xl italic leading-snug text-[--color-fg] md:text-3xl">
@@ -41,7 +46,7 @@ export default function About() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2 pt-2">
-              {["Next.js", "React", "TypeScript", "Tailwind", "React Native", "Node.js", "REST APIs", "PostgreSQL", "AI", "Figma", "Design", "Branding"].map((t) => (
+              {["Next.js", "React", "TypeScript", "Tailwind", "React Native", "Node.js", "REST APIs", "PostgreSQL", "AI / Fine-tuning", "ComfyUI", "Figma", "Illustrator", "Design", "Branding"].map((t) => (
                 <span
                   key={t}
                   className="rounded-full border border-[--color-border-strong] bg-[--color-surface] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-fg-2]"
