@@ -24,7 +24,7 @@ export default function About() {
             </p>
             <p>
               My thumbnails have driven over <strong className="text-[--color-fg]">500M YouTube views</strong> for top creators
-              including <strong className="text-[--color-fg]">Like Nastya (130M+ subscribers)</strong>, Khalid Al Ameri,
+              including <strong className="text-[--color-fg]">Like Nastya (150M+ subscribers)</strong>, Khalid Al Ameri,
               Corey Funk, Koreannosh, and Hudson Matter.
             </p>
             <p>
@@ -58,6 +58,7 @@ export default function About() {
           </div>
         </Reveal>
       </div>
+
     </section>
   );
 }

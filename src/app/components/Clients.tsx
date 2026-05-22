@@ -1,7 +1,7 @@
 import Reveal from "./Reveal";
 
 const clients = [
-  { name: "Like Nastya", note: "130M+ subscribers" },
+  { name: "Like Nastya", note: "150M+ subscribers" },
   { name: "Khalid Al Ameri", note: "Top MENA creator" },
   { name: "Corey Funk", note: "Action sports" },
   { name: "Koreannosh", note: "Lifestyle" },
