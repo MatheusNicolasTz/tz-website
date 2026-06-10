@@ -9,6 +9,7 @@ const services = [
     ),
     title: "Logo Design",
     desc: "Modern, memorable visual identities for brands that actually want to stand out.",
+    modes: ["designer"],
   },
   {
     icon: (
@@ -18,6 +19,7 @@ const services = [
     ),
     title: "Vibe Coding",
     desc: "I code apps and websites end-to-end — from idea to shipped product, fast and intentional with AI in the loop.",
+    modes: ["dev"],
   },
   {
     icon: (
@@ -28,6 +30,7 @@ const services = [
     ),
     title: "YouTube Thumbnails",
     desc: "Click-driving thumbnails for serious creators. 500M+ views generated across top-tier channels.",
+    modes: ["designer"],
   },
   {
     icon: (
@@ -38,6 +41,7 @@ const services = [
     ),
     title: "Landing Pages",
     desc: "High-converting pages. Fast, responsive, and designed to sell.",
+    modes: ["designer", "dev"],
   },
   {
     icon: (
@@ -48,6 +52,7 @@ const services = [
     ),
     title: "Mobile Apps",
     desc: "Cross-platform iOS and Android apps. From wireframe to App Store — performant and polished.",
+    modes: ["dev"],
   },
   {
     icon: (
@@ -58,6 +63,7 @@ const services = [
     ),
     title: "Backend & APIs",
     desc: "REST and serverless APIs, databases, auth, integrations — robust servers built to scale with the product.",
+    modes: ["dev"],
   },
 ];
 
@@ -65,14 +71,15 @@ export default function Services() {
   return (
     <section id="services" className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
       <Reveal>
-        <div className="mb-10 max-w-3xl">
-          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[--color-muted]">
-            — What I do
-          </span>
-          <h2 className="mt-4 font-serif text-5xl leading-[1] tracking-tight text-[--color-fg] md:text-6xl">
+        <div className="mb-12 border-t border-(--color-border) pt-6">
+          <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
+            <span>(01)</span>
+            <span>What I do</span>
+          </div>
+          <h2 className="mt-8 font-serif text-6xl leading-[0.95] tracking-tight text-(--color-fg) md:text-8xl">
             Services
           </h2>
-          <p className="mt-4 max-w-xl text-[--color-fg-2]">
+          <p className="mt-5 max-w-xl text-(--color-fg-2)">
             From idea to shipped product — design, code, and strategy.
           </p>
         </div>
@@ -81,15 +88,18 @@ export default function Services() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s, i) => (
           <Reveal key={s.title} delay={i * 80}>
-            <article className="group relative h-full overflow-hidden rounded-2xl border border-[--color-border] bg-[--color-surface] p-7 transition-all hover:-translate-y-1 hover:border-[--color-fg] hover:shadow-[0_24px_60px_-30px_rgba(53,49,31,0.55)]">
+            <article className="group relative h-full overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) p-7 transition-all hover:-translate-y-1 hover:border-(--color-border-strong) hover:bg-(--color-surface-2)">
+              <span className="absolute right-5 top-5 rounded-full border border-(--color-border-strong) px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-(--color-muted)">
+                {s.modes.length === 2 ? "Design + Dev" : s.modes[0] === "designer" ? "Design" : "Dev"}
+              </span>
               <div className="relative">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full border border-[--color-border-strong] bg-[--color-bg] text-[--color-fg]">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full border border-(--color-border-strong) bg-(--color-bg) text-(--color-fg)">
                   {s.icon}
                 </div>
-                <h3 className="font-serif text-2xl leading-tight tracking-tight text-[--color-fg]">
+                <h3 className="font-serif text-2xl leading-tight tracking-tight text-(--color-fg)">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[--color-fg-2]">
+                <p className="mt-2 text-sm leading-relaxed text-(--color-fg-2)">
                   {s.desc}
                 </p>
               </div>

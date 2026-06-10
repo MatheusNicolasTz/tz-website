@@ -62,9 +62,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[--color-bg] text-[--color-fg] font-sans selection:bg-[--color-fg] selection:text-[--color-bg]">
+      <body className="flex min-h-screen flex-col bg-(--color-bg) text-(--color-fg) font-sans selection:bg-(--color-fg) selection:text-(--color-bg)">
         {children}
       </body>
     </html>

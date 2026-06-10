@@ -3,6 +3,14 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const links = [
+  { href: "#services", label: "Services" },
+  { href: "#thumbnails", label: "Thumbnails" },
+  { href: "#clients", label: "Clients" },
+  { href: "#projects", label: "Projects" },
+  { href: "#about", label: "About" },
+];
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,26 +22,18 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { href: "#services", label: "Services" },
-    { href: "#thumbnails", label: "Thumbnails" },
-    { href: "#clients", label: "Clients" },
-    { href: "#projects", label: "Projects" },
-    { href: "#about", label: "About" },
-  ];
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-[--color-border] bg-[--color-bg]/80 backdrop-blur-xl"
+          ? "border-b border-(--color-border) bg-(--color-bg)/80 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <a
           href="#top"
-          className="flex items-center gap-2.5 text-[--color-fg]"
+          className="flex items-center gap-2.5 text-(--color-fg)"
           aria-label="TzDev — home"
         >
           <Image
@@ -44,7 +44,7 @@ export default function Nav() {
             priority
             className="h-9 w-9 object-contain"
           />
-          <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[--color-muted] sm:inline">
+          <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-(--color-muted) sm:inline">
             TzDev
           </span>
         </a>
@@ -54,7 +54,7 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-full px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[--color-muted] transition-colors hover:text-[--color-fg]"
+              className="rounded-full px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--color-muted) transition-colors hover:text-(--color-fg)"
             >
               {l.label}
             </a>
@@ -63,15 +63,18 @@ export default function Nav() {
 
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-[--color-fg] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[--color-bg] transition-transform hover:-translate-y-px"
+          className="hidden md:inline-flex items-center gap-2 rounded-full bg-(--color-fg) px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--color-bg) transition-transform hover:-translate-y-px"
         >
-          Contact
+          Let&apos;s chat
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+            <path d="M7 17L17 7M9 7h8v8" />
+          </svg>
         </a>
 
         <button
           aria-label="Open menu"
           aria-expanded={open}
-          className="md:hidden flex items-center justify-center rounded-full border border-[--color-border-strong] p-2 text-[--color-fg]"
+          className="md:hidden flex items-center justify-center rounded-full border border-(--color-border-strong) p-2 text-(--color-fg)"
           onClick={() => setOpen((v) => !v)}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -81,14 +84,14 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div className="border-t border-[--color-border] bg-[--color-bg]/95 px-6 py-4 backdrop-blur-xl md:hidden">
+        <div className="border-t border-(--color-border) bg-(--color-bg)/95 px-6 py-4 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1">
             {[...links, { href: "#contact", label: "Contact" }].map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[--color-fg-2] hover:bg-[--color-surface]"
+                className="rounded-lg px-3 py-3 font-mono text-xs uppercase tracking-[0.18em] text-(--color-fg-2) hover:bg-(--color-surface)"
               >
                 {l.label}
               </a>

@@ -36,17 +36,20 @@ export default function Thumbnails() {
   return (
     <section id="thumbnails" className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
       <Reveal>
+        <div className="mb-12 border-t border-(--color-border) pt-6">
+          <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
+            <span>(02)</span>
+            <span>Portfolio</span>
+          </div>
+        </div>
         <div className="mb-10 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[--color-muted]">
-              — Portfolio
-            </span>
-            <h2 className="mt-4 font-serif text-5xl leading-[1] tracking-tight text-[--color-fg] md:text-6xl">
+            <h2 className="font-serif text-6xl leading-[0.95] tracking-tight text-(--color-fg) md:text-8xl">
               Thumbnails that <em className="italic">convert</em>
             </h2>
           </div>
-          <p className="max-w-md text-[--color-fg-2]">
-            Over <strong className="text-[--color-fg]">500M+ YouTube views</strong> driven — from
+          <p className="max-w-md text-(--color-fg-2)">
+            Over <strong className="text-(--color-fg)">500M+ YouTube views</strong> driven — from
             Like Nastya (130M+ subs) to Khalid Al Ameri, Corey Funk, Koreannosh, and Hudson Matter.
           </p>
         </div>
@@ -59,7 +62,7 @@ export default function Thumbnails() {
               key={file}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className="group relative block aspect-video w-full overflow-hidden rounded-md bg-[--color-surface-2] focus:outline-none focus:ring-2 focus:ring-[--color-fg] focus:ring-offset-2 focus:ring-offset-[--color-bg]"
+              className="group relative block aspect-video w-full overflow-hidden rounded-md bg-(--color-surface-2) focus:outline-none focus:ring-2 focus:ring-(--color-fg) focus:ring-offset-2 focus:ring-offset-(--color-bg)"
               aria-label={`Open thumbnail ${i + 1}`}
             >
               <Image
@@ -98,27 +101,31 @@ export default function Thumbnails() {
           href="https://www.unlayered.design/p/40-tz"
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-8 flex overflow-hidden rounded-2xl border border-[--color-border-strong] bg-[--color-surface] transition-colors hover:bg-[--color-bg-2]"
+          className="group mt-12 flex flex-col gap-3 border-y border-(--color-border) py-7 md:flex-row md:items-baseline md:justify-between md:gap-8"
         >
-          <div className="relative h-auto w-40 shrink-0 overflow-hidden sm:w-52">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/25d1159f-30d3-4b40-a0c7-99082e6284eb/thumbnail.jpg?t=1779124551"
-              alt="Unlayered Issue #40 — TZ"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+          <div className="flex min-w-0 flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
+            <span className="shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-(--color-accent-warm)">
+              Featured in · Unlayered
+            </span>
+            <span className="font-serif text-2xl leading-tight text-(--color-fg) md:text-3xl">
+              Issue #40 — TZ{" "}
+              <em className="italic text-(--color-fg-2)">· thumbnail breakdown &amp; workflow</em>
+            </span>
           </div>
-          <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 px-6 py-5">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-muted]">Featured in · Unlayered</p>
-            <p className="font-medium text-[--color-fg]">Issue #40 — TZ</p>
-            <p className="text-sm leading-relaxed text-[--color-fg-2]">Thumbnail breakdown, process &amp; workflow deep-dive featuring a thumbnail made for Corey Funk.</p>
-            <p className="mt-1 flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-muted]">
-              Read article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17L17 7M7 7h10v10" />
-              </svg>
-            </p>
-          </div>
+          <span className="flex shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-(--color-muted) transition-colors group-hover:text-(--color-fg)">
+            Read article
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            >
+              <path d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </span>
         </a>
       </Reveal>
 
@@ -128,14 +135,14 @@ export default function Thumbnails() {
           role="dialog"
           aria-modal="true"
           onClick={() => setActiveIndex(null)}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[--color-fg]/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
         >
           {/* Close */}
           <button
             type="button"
             aria-label="Close"
             onClick={() => setActiveIndex(null)}
-            className="absolute right-5 top-5 rounded-full bg-[--color-bg] p-2 text-[--color-fg] transition-transform hover:scale-110"
+            className="absolute right-5 top-5 rounded-full bg-(--color-fg) p-2 text-(--color-bg) transition-transform hover:scale-110"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
               <path d="M6 6l12 12M6 18L18 6" />
@@ -147,7 +154,7 @@ export default function Thumbnails() {
             type="button"
             aria-label="Previous"
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-[--color-bg] p-3 text-[--color-fg] shadow-lg transition-transform hover:scale-110"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-(--color-fg) p-3 text-(--color-bg) shadow-lg transition-transform hover:scale-110"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
               <path d="M15 18l-6-6 6-6" />
@@ -189,7 +196,7 @@ export default function Thumbnails() {
             type="button"
             aria-label="Next"
             onClick={(e) => { e.stopPropagation(); next(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-[--color-bg] p-3 text-[--color-fg] shadow-lg transition-transform hover:scale-110"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-(--color-fg) p-3 text-(--color-bg) shadow-lg transition-transform hover:scale-110"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
               <path d="M9 18l6-6-6-6" />

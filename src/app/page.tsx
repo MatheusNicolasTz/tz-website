@@ -8,12 +8,15 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Thumbnails from "./components/Thumbnails";
+import AdventureBrand from "./components/AdventureBrand";
 import Clients from "./components/Clients";
 import Cursor from "./components/Cursor";
+import SmoothScroll from "./components/SmoothScroll";
 
 export default function Home() {
   return (
     <>
+      <SmoothScroll />
       <Cursor />
       <Background />
       <Nav />
@@ -21,6 +24,7 @@ export default function Home() {
         <Hero />
         <Services />
         <Thumbnails />
+        <AdventureBrand />
         <Clients />
         <Projects />
         <About />
