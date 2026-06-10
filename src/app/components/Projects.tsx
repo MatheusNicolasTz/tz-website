@@ -53,94 +53,82 @@ export default function Projects() {
       </Reveal>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-        {cards.map((c, i) => {
-          const Tag = c.href ? "a" : "article";
-          return (
-            <Reveal key={c.title} className={c.span} delay={i * 80}>
-              <Tag
-                {...(c.href ? { href: c.href } : {})}
-                className={`group relative block h-full overflow-hidden rounded-2xl border p-7 transition-all hover:-translate-y-1 ${
-                  c.featured
-                    ? "border-(--color-fg) bg-(--color-fg) text-(--color-bg) md:p-9"
-                    : "border-(--color-border) bg-(--color-surface) text-(--color-fg) hover:border-(--color-border-strong) hover:bg-(--color-surface-2)"
-                }`}
-              >
-                <div className="flex flex-wrap items-center gap-2">
+        {cards.map((c, i) => (
+          <Reveal key={c.title} className={c.span} delay={i * 80}>
+            <article
+              className={`group relative block h-full overflow-hidden rounded-2xl border p-7 transition-all hover:-translate-y-1 ${
+                c.featured
+                  ? "border-(--color-fg) bg-(--color-fg) text-(--color-bg) md:p-9"
+                  : "border-(--color-border) bg-(--color-surface) text-(--color-fg) hover:border-(--color-border-strong) hover:bg-(--color-surface-2)"
+              }`}
+            >
+              <div className="flex flex-wrap items-center gap-2">
+                <span
+                  className={`inline-block rounded-full border px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] ${
+                    c.featured
+                      ? "border-(--color-bg)/30 text-(--color-bg)/85"
+                      : "border-(--color-border-strong) text-(--color-muted)"
+                  }`}
+                >
+                  {c.badge}
+                </span>
+                {c.badgeNote && (
                   <span
-                    className={`inline-block rounded-full border px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] ${
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] ${
                       c.featured
-                        ? "border-(--color-bg)/30 text-(--color-bg)/85"
-                        : "border-(--color-border-strong) text-(--color-muted)"
+                        ? "border-[#76b900]/50 bg-[#76b900]/15 text-[#76b900]"
+                        : "border-[#76b900]/40 bg-[#76b900]/10 text-[#76b900]"
                     }`}
                   >
-                    {c.badge}
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#76b900]" />
+                    {c.badgeNote}
                   </span>
-                  {c.badgeNote && (
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] ${
-                        c.featured
-                          ? "border-[#76b900]/50 bg-[#76b900]/15 text-[#76b900]"
-                          : "border-[#76b900]/40 bg-[#76b900]/10 text-[#76b900]"
-                      }`}
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#76b900]" />
-                      {c.badgeNote}
-                    </span>
-                  )}
-                </div>
-                <h3
-                  className={`mt-5 font-serif leading-tight tracking-tight ${
-                    c.featured ? "text-4xl md:text-5xl" : "text-3xl"
-                  }`}
-                >
-                  {c.title}
-                </h3>
-                <p
-                  className={`mt-3 max-w-xl text-sm leading-relaxed ${
-                    c.featured ? "text-(--color-bg)/80 md:text-base" : "text-(--color-fg-2)"
-                  }`}
-                >
-                  {c.body}
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {c.tags.map((t) => (
-                    <span
-                      key={t}
-                      className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${
-                        c.featured
-                          ? "bg-(--color-bg)/15 text-(--color-bg)"
-                          : "bg-(--color-bg) text-(--color-fg-2)"
-                      }`}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                {c.featured && c.url && (
-                  <a
-                    href={c.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="mt-7 inline-flex items-center gap-2 rounded-full bg-(--color-bg) px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-(--color-fg) transition-transform hover:-translate-y-0.5"
+                )}
+              </div>
+              <h3
+                className={`mt-5 font-serif leading-tight tracking-tight ${
+                  c.featured ? "text-4xl md:text-5xl" : "text-3xl"
+                }`}
+              >
+                {c.title}
+              </h3>
+              <p
+                className={`mt-3 max-w-xl text-sm leading-relaxed ${
+                  c.featured ? "text-(--color-bg)/80 md:text-base" : "text-(--color-fg-2)"
+                }`}
+              >
+                {c.body}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {c.tags.map((t) => (
+                  <span
+                    key={t}
+                    className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${
+                      c.featured
+                        ? "bg-(--color-bg)/15 text-(--color-bg)"
+                        : "bg-(--color-bg) text-(--color-fg-2)"
+                    }`}
                   >
-                    Visit adventuregen.ai
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-                      <path d="M7 17L17 7M9 7h8v8" />
-                    </svg>
-                  </a>
-                )}
-                {c.href && (
-                  <span className="mt-7 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-(--color-fg-2) transition-colors group-hover:text-(--color-fg)">
-                    See the app
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-                      <path d="M5 12h14M13 5l7 7-7 7" />
-                    </svg>
+                    {t}
                   </span>
-                )}
-              </Tag>
-            </Reveal>
-          );
-        })}
+                ))}
+              </div>
+              {c.featured && c.url && (
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-(--color-bg) px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-(--color-fg) transition-transform hover:-translate-y-0.5"
+                >
+                  Visit adventuregen.ai
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </a>
+              )}
+            </article>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
