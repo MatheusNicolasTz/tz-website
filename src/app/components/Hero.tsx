@@ -1,5 +1,4 @@
 import Image from "next/image";
-import GlobeLazy from "./GlobeLazy";
 
 const strip = [
   "tmb1.webp", "tmb2.webp", "tmb3.webp", "tmb4.webp",
@@ -12,45 +11,31 @@ const strip = [
 export default function Hero() {
   return (
     <section className="relative">
-      <div className="mx-auto max-w-7xl px-6 pt-32 pb-14 md:px-10 md:pt-40 md:pb-20">
-        <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.2em] text-(--color-muted)">
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-(--color-accent-warm) pulse-dot" />
-            Available · 2026
-          </span>
-          <span className="hidden sm:inline">Matheus Nicolas — aka TzDev</span>
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 pt-24 pb-8 text-center md:px-10 md:pt-28 md:pb-10">
+        <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-(--color-muted)">
+          <span className="h-1.5 w-1.5 rounded-full bg-(--color-accent-warm) pulse-dot" />
+          Available · 2026
         </div>
 
-        <div
-          className="absolute right-2 top-24 hidden lg:block xl:right-12"
-          style={{ width: 540, height: 540 }}
-        >
-          <GlobeLazy />
-        </div>
-
-        <h1 className="relative mt-10 text-(--color-fg)">
-          <span className="block font-serif text-[7vw] italic leading-[1.05] tracking-[-0.01em] text-(--color-fg-2) md:text-6xl">
+        <h1 className="relative mt-6 text-(--color-fg)">
+          <span className="block font-serif text-[6vw] italic leading-[1.05] tracking-[-0.01em] text-(--color-fg-2) md:text-5xl">
             I am a
           </span>
-          <span className="block font-sans text-[13vw] font-black uppercase leading-[0.92] tracking-[-0.03em] md:text-[8.5rem] lg:text-[10.5rem]">
+          <span className="block font-sans text-[12vw] font-black uppercase leading-[0.92] tracking-[-0.03em] md:text-[7rem] lg:text-[8.5rem]">
             Designer
           </span>
-          <span className="block font-serif text-[10vw] italic leading-[1.05] tracking-[-0.02em] text-(--color-fg-2) md:text-[6.5rem] lg:text-[8rem]">
+          <span className="block font-serif text-[9vw] italic leading-[1.05] tracking-[-0.02em] text-(--color-fg-2) md:text-[5.5rem] lg:text-[6.5rem]">
             &amp; <span className="text-(--color-accent-warm)">developer</span>.
           </span>
         </h1>
 
-        <div className="relative mt-12 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
-          <p className="max-w-xl text-lg leading-relaxed text-(--color-fg-2) md:text-xl">
-            Known as <strong className="font-medium text-(--color-fg)">TzDev</strong>.
-            I design high-performing <em className="font-serif italic">thumbnails</em> and logos,
-            while building <strong className="font-medium text-(--color-fg)">full-stack web apps, mobile apps, and APIs</strong> end-to-end.
-            Founder of <strong className="font-medium text-(--color-fg)">Adventure AI</strong>.
-            My work has generated <span className="text-(--color-fg)">500M+ YouTube views</span> for
-            some of the world&apos;s biggest creators.
+        <div className="relative mt-8 flex flex-col items-center gap-6">
+          <p className="max-w-xl text-base leading-relaxed text-(--color-fg-2) md:text-lg">
+            I design <em className="font-serif italic">thumbnails</em> and logos, and build full-stack apps.
+            My work has driven <strong className="font-medium text-(--color-fg)">500M+ YouTube views</strong>.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 md:justify-end">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href="#thumbnails"
               className="inline-flex items-center gap-2 rounded-full bg-(--color-fg) px-6 py-3 text-sm font-medium text-(--color-bg) transition-transform hover:-translate-y-0.5"
@@ -88,28 +73,6 @@ export default function Hero() {
                 className="object-cover"
                 priority={i < 5}
               />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <div className="grid grid-cols-2 divide-x divide-(--color-border) border-b border-(--color-border) md:grid-cols-3">
-          {[
-            { n: "500M+", l: "YouTube views" },
-            { n: "20+", l: "Top-tier creators" },
-            { n: "2", l: "Apps in the works" },
-          ].map((s, i) => (
-            <div
-              key={s.l}
-              className={`flex flex-col gap-2 py-8 ${i === 0 ? "pr-6" : "px-6"}`}
-            >
-              <span className="font-serif text-4xl leading-none text-(--color-fg) md:text-5xl">
-                {s.n}
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-(--color-muted)">
-                {s.l}
-              </span>
             </div>
           ))}
         </div>

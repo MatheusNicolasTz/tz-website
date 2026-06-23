@@ -39,6 +39,28 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Custom scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border: 2px solid var(--color-bg-2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-2);
+}
+
 .text-gradient,
 .text-gradient-2 {
   color: var(--color-fg);

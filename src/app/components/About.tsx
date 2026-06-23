@@ -35,8 +35,7 @@ export default function About() {
             <p>
               Right now I&apos;m building <strong className="text-(--color-fg)">Adventure AI</strong> and shipping
               <strong className="text-(--color-fg)"> web apps, mobile apps, APIs and backend servers</strong> end-to-end —
-              alongside thumbnails, logos and landing pages in <em className="font-serif italic text-(--color-fg)">vibe coding</em>
-              mode — fast, intentional, and with identity.
+              alongside thumbnails, logos and landing pages — fast, intentional, and with identity.
             </p>
             <p>
               On the AI side, I <strong className="text-(--color-fg)">fine-tune pre-trained models</strong> and run

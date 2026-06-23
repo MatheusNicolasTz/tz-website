@@ -90,7 +90,7 @@ export default async function Image() {
           }}
         >
           <div style={{ display: "flex" }}>Available · 2026</div>
-          <div style={{ display: "flex" }}>Adventure AI · Vibe Coding</div>
+          <div style={{ display: "flex" }}>Adventure AI · Web Apps</div>
         </div>
       </div>
     ),

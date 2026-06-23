@@ -17,8 +17,8 @@ const services = [
         <path d="M8 18l-6-6 6-6M16 6l6 6-6 6M14 4l-4 16" />
       </svg>
     ),
-    title: "Vibe Coding",
-    desc: "I code apps and websites end-to-end — from idea to shipped product, fast and intentional with AI in the loop.",
+    title: "Web Apps",
+    desc: "I code apps and websites end-to-end — from idea to shipped product, fast and intentional.",
     modes: ["dev"],
   },
   {

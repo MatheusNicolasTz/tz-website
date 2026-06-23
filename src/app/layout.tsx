@@ -32,7 +32,6 @@ export const metadata: Metadata = {
     "thumbnail design",
     "Adventure AI",
     "Like Nastya thumbnails",
-    "vibe coding",
     "landing page",
     "logo design",
   ],

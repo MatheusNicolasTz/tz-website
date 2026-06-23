@@ -1,7 +1,6 @@
 import Reveal from "./Reveal";
 
 const items = [
-  "Vibe Coding",
   "500M+ Views",
   "Adventure AI",
   "YouTube Thumbnails",
