@@ -1,12 +1,12 @@
 import Reveal from "./Reveal";
 
-export default function About() {
+export default function About({ index = "06" }: { index?: string }) {
   return (
     <section id="about" className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
       <Reveal>
         <div className="mb-12 border-t border-(--color-border) pt-6">
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
-            <span>(06)</span>
+            <span>({index})</span>
             <span>About</span>
           </div>
         </div>
@@ -34,8 +34,8 @@ export default function About() {
             </p>
             <p>
               Right now I&apos;m building <strong className="text-(--color-fg)">Adventure AI</strong> and shipping
-              <strong className="text-(--color-fg)"> web apps, mobile apps, APIs and backend servers</strong> end-to-end —
-              alongside thumbnails, logos and landing pages — fast, intentional, and with identity.
+              <strong className="text-(--color-fg)"> web apps and mobile apps</strong> end-to-end — integrating APIs,
+              Google Cloud and whatever the product needs — alongside thumbnails, logos and landing pages.
             </p>
             <p>
               On the AI side, I <strong className="text-(--color-fg)">fine-tune pre-trained models</strong> and run
@@ -50,7 +50,7 @@ export default function About() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2 pt-2">
-              {["Next.js", "React", "TypeScript", "Tailwind", "React Native", "Node.js", "REST APIs", "PostgreSQL", "AI / Fine-tuning", "ComfyUI", "Figma", "Illustrator", "Design", "Branding"].map((t) => (
+              {["Next.js", "React", "TypeScript", "Tailwind", "React Native", "Node.js", "API Integration", "Google Cloud", "AI / Fine-tuning", "ComfyUI", "Figma", "Illustrator", "Design", "Branding"].map((t) => (
                 <span
                   key={t}
                   className="rounded-full border border-(--color-border-strong) bg-(--color-surface) px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-(--color-fg-2)"

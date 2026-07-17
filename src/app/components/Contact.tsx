@@ -1,12 +1,12 @@
 import Reveal from "./Reveal";
 
-export default function Contact() {
+export default function Contact({ index = "07" }: { index?: string }) {
   return (
     <section id="contact" className="relative border-t border-(--color-border)">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36">
         <Reveal>
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
-            <span>(07)</span>
+            <span>({index})</span>
             <span>Contact</span>
           </div>
         </Reveal>

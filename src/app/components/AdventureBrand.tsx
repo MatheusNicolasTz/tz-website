@@ -63,13 +63,13 @@ const shots: Shot[] = [
   },
 ];
 
-export default function AdventureBrand() {
+export default function AdventureBrand({ index = "03" }: { index?: string }) {
   return (
     <section id="brand" className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
       <Reveal>
         <div className="mb-12 border-t border-(--color-border) pt-6">
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
-            <span>(03)</span>
+            <span>({index})</span>
             <span>Brand identity</span>
           </div>
           <div className="mt-8 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">

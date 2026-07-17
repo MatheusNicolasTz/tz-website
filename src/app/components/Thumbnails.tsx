@@ -11,7 +11,7 @@ const thumbs = [
   "tmb17.webp","tmb18.webp","tmb19.webp","tmb20.webp","tmb21.webp",
 ];
 
-export default function Thumbnails() {
+export default function Thumbnails({ index = "02" }: { index?: string }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const prev = useCallback(() => {
@@ -38,7 +38,7 @@ export default function Thumbnails() {
       <Reveal>
         <div className="mb-12 border-t border-(--color-border) pt-6">
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
-            <span>(02)</span>
+            <span>({index})</span>
             <span>Portfolio</span>
           </div>
         </div>

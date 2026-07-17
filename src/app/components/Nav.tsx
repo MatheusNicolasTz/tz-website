@@ -1,17 +1,33 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const links = [
-  { href: "#services", label: "Services" },
-  { href: "#thumbnails", label: "Thumbnails" },
-  { href: "#clients", label: "Clients" },
-  { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
+const devLinks = [
+  { href: "/#services", label: "Services" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#about", label: "About" },
+];
+
+const designLinks = [
+  { href: "/design#services", label: "Services" },
+  { href: "/design#thumbnails", label: "Thumbnails" },
+  { href: "/design#brand", label: "Brand" },
+  { href: "/design#clients", label: "Clients" },
+];
+
+const modes = [
+  { href: "/", label: "Dev" },
+  { href: "/design", label: "Design" },
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
+  const isDesign = pathname.startsWith("/design");
+  const links = isDesign ? designLinks : devLinks;
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -22,6 +38,32 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  const modeToggle = (
+    <div className="flex items-center rounded-full border border-(--color-border-strong) bg-(--color-surface) p-1">
+      {modes.map((m) => {
+        const active = isDesign === (m.href === "/design");
+        return (
+          <Link
+            key={m.href}
+            href={m.href}
+            aria-current={active ? "page" : undefined}
+            className={`rounded-full px-3.5 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] transition-colors ${
+              active
+                ? "bg-(--color-fg) text-(--color-bg)"
+                : "text-(--color-muted) hover:text-(--color-fg)"
+            }`}
+          >
+            {m.label}
+          </Link>
+        );
+      })}
+    </div>
+  );
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -30,24 +72,28 @@ export default function Nav() {
           : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <a
-          href="#top"
-          className="flex items-center gap-2.5 text-(--color-fg)"
-          aria-label="TzDev — home"
-        >
-          <Image
-            src="/logo.png"
-            alt="TzDev"
-            width={36}
-            height={36}
-            priority
-            className="h-9 w-9 object-contain"
-          />
-          <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-(--color-muted) sm:inline">
-            TzDev
-          </span>
-        </a>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4 md:px-10">
+        <div className="flex items-center gap-4">
+          <a
+            href="#top"
+            className="flex items-center gap-2.5 text-(--color-fg)"
+            aria-label="TzDev — home"
+          >
+            <Image
+              src="/logo.png"
+              alt="TzDev"
+              width={36}
+              height={36}
+              priority
+              className="h-9 w-9 object-contain"
+            />
+            <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-(--color-muted) sm:inline">
+              TzDev
+            </span>
+          </a>
+
+          {modeToggle}
+        </div>
 
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (

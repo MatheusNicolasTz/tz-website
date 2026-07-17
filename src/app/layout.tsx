@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TzDev — Matheus Nicolas | YouTube Thumbnails, Logos & Landing Pages",
+  title: "TzDev — Matheus Nicolas | Full-Stack Developer & Designer",
   description:
     "Matheus Nicolas (TzDev) — designer and developer. 500M+ YouTube views driven through thumbnails for Like Nastya, Khalid Al Ameri, Corey Funk, Koreannosh, Hudson Matter and more. Building Adventure AI and other products.",
   keywords: [

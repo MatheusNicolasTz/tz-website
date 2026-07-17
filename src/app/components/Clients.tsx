@@ -8,13 +8,13 @@ const clients = [
   { name: "Hudson Matter", note: "Entertainment" },
 ];
 
-export default function Clients() {
+export default function Clients({ index = "04" }: { index?: string }) {
   return (
     <section id="clients" className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
       <Reveal>
         <div className="mb-12 border-t border-(--color-border) pt-6">
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
-            <span>(04)</span>
+            <span>({index})</span>
             <span>Trusted by</span>
           </div>
           <h2 className="mt-8 font-serif text-6xl leading-[0.95] tracking-tight text-(--color-fg) md:text-8xl">

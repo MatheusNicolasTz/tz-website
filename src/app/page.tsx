@@ -7,9 +7,6 @@ import Projects from "./components/Projects";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import Thumbnails from "./components/Thumbnails";
-import AdventureBrand from "./components/AdventureBrand";
-import Clients from "./components/Clients";
 import Cursor from "./components/Cursor";
 import SmoothScroll from "./components/SmoothScroll";
 
@@ -21,15 +18,12 @@ export default function Home() {
       <Background />
       <Nav />
       <main id="top" className="relative flex-1">
-        <Hero />
-        <Services />
-        <Thumbnails />
-        <AdventureBrand />
-        <Clients />
-        <Projects />
-        <About />
+        <Hero mode="dev" />
+        <Services mode="dev" index="01" />
+        <Projects index="02" />
+        <About index="03" />
         <Marquee />
-        <Contact />
+        <Contact index="04" />
       </main>
       <Footer />
     </>

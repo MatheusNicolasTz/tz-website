@@ -57,41 +57,54 @@ const services = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
-        <ellipse cx="12" cy="5" rx="9" ry="3" />
-        <path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6" />
+        <path d="M17.5 19a4.5 4.5 0 1 0-.9-8.9 6 6 0 0 0-11.4 1.8A3.5 3.5 0 0 0 6 19h11.5z" />
       </svg>
     ),
-    title: "Backend & APIs",
-    desc: "REST and serverless APIs, databases, auth, integrations — robust servers built to scale with the product.",
+    title: "Cloud & Integrations",
+    desc: "Google Cloud, third-party APIs, auth, payments — I wire everything together so the product just works.",
     modes: ["dev"],
   },
 ];
 
-export default function Services() {
+type ServicesProps = {
+  mode?: "dev" | "designer";
+  index?: string;
+};
+
+export default function Services({ mode, index = "01" }: ServicesProps) {
+  const visible = mode ? services.filter((s) => s.modes.includes(mode)) : services;
+  const tagline = mode === "dev"
+    ? "From idea to shipped product — web, mobile, and backend."
+    : mode === "designer"
+      ? "Identity, thumbnails, and pages designed to convert."
+      : "From idea to shipped product — design, code, and strategy.";
+
   return (
     <section id="services" className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
       <Reveal>
         <div className="mb-12 border-t border-(--color-border) pt-6">
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
-            <span>(01)</span>
+            <span>({index})</span>
             <span>What I do</span>
           </div>
           <h2 className="mt-8 font-serif text-6xl leading-[0.95] tracking-tight text-(--color-fg) md:text-8xl">
             Services
           </h2>
           <p className="mt-5 max-w-xl text-(--color-fg-2)">
-            From idea to shipped product — design, code, and strategy.
+            {tagline}
           </p>
         </div>
       </Reveal>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((s, i) => (
+        {visible.map((s, i) => (
           <Reveal key={s.title} delay={i * 80}>
             <article className="group relative h-full overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) p-7 transition-all hover:-translate-y-1 hover:border-(--color-border-strong) hover:bg-(--color-surface-2)">
-              <span className="absolute right-5 top-5 rounded-full border border-(--color-border-strong) px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-(--color-muted)">
-                {s.modes.length === 2 ? "Design + Dev" : s.modes[0] === "designer" ? "Design" : "Dev"}
-              </span>
+              {(!mode || s.modes.length === 2) && (
+                <span className="absolute right-5 top-5 rounded-full border border-(--color-border-strong) px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-(--color-muted)">
+                  {s.modes.length === 2 ? "Design + Dev" : s.modes[0] === "designer" ? "Design" : "Dev"}
+                </span>
+              )}
               <div className="relative">
                 <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full border border-(--color-border-strong) bg-(--color-bg) text-(--color-fg)">
                   {s.icon}
