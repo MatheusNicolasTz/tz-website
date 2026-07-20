@@ -14,6 +14,7 @@ const devLinks = [
 const designLinks = [
   { href: "/design#services", label: "Services" },
   { href: "/design#thumbnails", label: "Thumbnails" },
+  { href: "/design#before-after", label: "Before / After" },
   { href: "/design#brand", label: "Brand" },
   { href: "/design#clients", label: "Clients" },
 ];

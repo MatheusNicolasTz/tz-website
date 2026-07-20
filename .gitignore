@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# before/after source art — only the generated .webp is deployed
+# regenerate with: node scripts/optimize-bfa.mjs
+/public/thumbnails/BFA/*.png
+/public/thumbnails/BFA/*.jpg

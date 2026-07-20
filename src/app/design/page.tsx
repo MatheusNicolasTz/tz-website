@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import Services from "../components/Services";
 import Thumbnails from "../components/Thumbnails";
+import BeforeAfter from "../components/BeforeAfter";
 import AdventureBrand from "../components/AdventureBrand";
 import Clients from "../components/Clients";
 import Contact from "../components/Contact";
@@ -29,10 +30,11 @@ export default function DesignPage() {
         <Hero mode="design" />
         <Services mode="designer" index="01" />
         <Thumbnails index="02" />
-        <AdventureBrand index="03" />
-        <Clients index="04" />
+        <BeforeAfter index="03" />
+        <AdventureBrand index="04" />
+        <Clients index="05" />
         <Marquee />
-        <Contact index="05" />
+        <Contact index="06" />
       </main>
       <Footer />
     </>
