@@ -8,26 +8,27 @@ import { useEffect, useState } from "react";
 const devLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#projects", label: "Projects" },
+  { href: "/#brand", label: "Brand" },
   { href: "/#about", label: "About" },
 ];
 
-const designLinks = [
-  { href: "/design#services", label: "Services" },
-  { href: "/design#thumbnails", label: "Thumbnails" },
-  { href: "/design#before-after", label: "Before / After" },
-  { href: "/design#brand", label: "Brand" },
-  { href: "/design#clients", label: "Clients" },
+const thumbnailLinks = [
+  { href: "/thumbnails#strategy", label: "Strategy" },
+  { href: "/thumbnails#thumbnails", label: "Portfolio" },
+  { href: "/thumbnails#before-after", label: "Before / After" },
+  { href: "/thumbnails#teardown", label: "Teardown" },
+  { href: "/thumbnails#clients", label: "Clients" },
 ];
 
 const modes = [
   { href: "/", label: "Dev" },
-  { href: "/design", label: "Design" },
+  { href: "/thumbnails", label: "Thumbnails" },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
-  const isDesign = pathname.startsWith("/design");
-  const links = isDesign ? designLinks : devLinks;
+  const isThumbnails = pathname.startsWith("/thumbnails");
+  const links = isThumbnails ? thumbnailLinks : devLinks;
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -46,7 +47,7 @@ export default function Nav() {
   const modeToggle = (
     <div className="flex items-center rounded-full border border-(--color-border-strong) bg-(--color-surface) p-1">
       {modes.map((m) => {
-        const active = isDesign === (m.href === "/design");
+        const active = isThumbnails === (m.href === "/thumbnails");
         return (
           <Link
             key={m.href}

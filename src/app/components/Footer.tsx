@@ -16,6 +16,14 @@ export default function Footer() {
             >
               WhatsApp
             </a>
+            <a
+              href="https://ytjobs.co/talent/profile/5441?r=262&utm_campaign=share-profile&utm_ref=talent"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="transition-colors hover:text-(--color-fg)"
+            >
+              YTJobs
+            </a>
             <a href="https://x.com/TzDev_" target="_blank" rel="noreferrer noopener" className="transition-colors hover:text-(--color-fg)">
               X
             </a>

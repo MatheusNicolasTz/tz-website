@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
+import AdventureBrand from "./components/AdventureBrand";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -19,11 +20,12 @@ export default function Home() {
       <Nav />
       <main id="top" className="relative flex-1">
         <Hero mode="dev" />
-        <Services mode="dev" index="01" />
+        <Services index="01" />
         <Projects index="02" />
-        <About index="03" />
-        <Marquee />
-        <Contact index="04" />
+        <AdventureBrand index="03" />
+        <About index="04" />
+        <Marquee mode="dev" />
+        <Contact index="05" />
       </main>
       <Footer />
     </>

@@ -1,19 +1,35 @@
 import Reveal from "./Reveal";
 
-const items = [
-  "500M+ Views",
-  "Adventure AI",
-  "YouTube Thumbnails",
-  "Landing Pages",
-  "Web Apps",
-  "Mobile Apps",
-  "Branding",
-  "Logos",
-  "AI Products",
-];
+// Keep every list EVEN. The track scrolls to translateX(-50%), so the second copy
+// has to look identical to the first for the loop to be seamless — and the styling
+// below alternates on index, which an odd count flips on the second pass.
+//
+// Ordering matters too: serif italic lands on even indices, heavy uppercase on odd.
+const items = {
+  dev: [
+    "Web Apps",
+    "Mobile Apps",
+    "Landing Pages",
+    "Adventure AI",
+    "Integrations",
+    "Logos",
+    "Branding",
+    "AI Products",
+  ],
+  thumbnails: [
+    "Thumbnails",
+    "500M+ Views",
+    "Titles",
+    "CTR",
+    "Hooks",
+    "100+ Creators",
+    "Packaging",
+    "Strategy",
+  ],
+};
 
-export default function Marquee() {
-  const row = [...items, ...items];
+export default function Marquee({ mode = "dev" }: { mode?: "dev" | "thumbnails" }) {
+  const row = [...items[mode], ...items[mode]];
   return (
     <Reveal>
       <div className="relative my-2 overflow-hidden border-y border-(--color-border) bg-(--color-bg-2) py-8">

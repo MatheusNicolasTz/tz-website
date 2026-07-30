@@ -1,19 +1,13 @@
 import Image from "next/image";
-
-const strip = [
-  "tmb1.webp", "tmb2.webp", "tmb3.webp", "tmb4.webp",
-  "tmb5.webp", "tmb6.webp", "tmb7.webp", "tmb8.webp",
-  "tmb9.webp", "tmb10.webp", "tmb11.webp", "tmb12.webp",
-  "tmb13.webp", "tmb15.webp", "tmb16.webp", "tmb17.webp",
-  "tmb18.webp", "tmb19.webp", "tmb20.webp", "tmb21.webp",
-];
+import { thumbs as strip } from "./thumbs";
 
 type HeroProps = {
-  mode?: "dev" | "design";
+  mode?: "dev" | "thumbnails";
 };
 
 const copy = {
   dev: {
+    pre: "I am a",
     big: "Developer",
     small: <>&amp; <span className="text-(--color-accent-warm)">designer</span>.</>,
     lead: (
@@ -25,20 +19,22 @@ const copy = {
     ),
     cta: { href: "#projects", label: "View projects" },
   },
-  design: {
-    big: "Designer",
-    small: <>&amp; <span className="text-(--color-accent-warm)">developer</span>.</>,
+  thumbnails: {
+    pre: "I design",
+    big: "Thumbnails",
+    small: <>that <span className="text-(--color-accent-warm)">earn</span> the click.</>,
     lead: (
       <>
-        I design <em className="font-serif italic">thumbnails</em> and logos for serious creators.
-        My work has driven <strong className="font-medium text-(--color-fg)">500M+ YouTube views</strong>.
+        I design <em className="font-serif italic">YouTube thumbnails</em> and the strategy behind
+        them — for creators who treat CTR as a number, not a vibe.{" "}
+        <strong className="font-medium text-(--color-fg)">500M+ views</strong> driven so far.
       </>
     ),
-    cta: { href: "#thumbnails", label: "View work" },
+    cta: { href: "#strategy", label: "How I think" },
   },
 };
 
-export default function Hero({ mode = "design" }: HeroProps) {
+export default function Hero({ mode = "thumbnails" }: HeroProps) {
   const c = copy[mode];
 
   return (
@@ -51,7 +47,7 @@ export default function Hero({ mode = "design" }: HeroProps) {
 
         <h1 className="relative mt-6 text-(--color-fg)">
           <span className="block font-serif text-[6vw] italic leading-[1.05] tracking-[-0.01em] text-(--color-fg-2) md:text-5xl">
-            I am a
+            {c.pre}
           </span>
           <span className="block font-sans text-[12vw] font-black uppercase leading-[0.92] tracking-[-0.03em] md:text-[7rem] lg:text-[8.5rem]">
             {c.big}
@@ -89,7 +85,7 @@ export default function Hero({ mode = "design" }: HeroProps) {
         </div>
       </div>
 
-      {mode === "design" && (
+      {mode === "thumbnails" && (
         <div className="relative overflow-hidden border-y border-(--color-border) bg-(--color-bg-2) py-6">
           <div className="flex w-max marquee-track gap-4 pr-4">
             {[...strip, ...strip].map((file, i) => (

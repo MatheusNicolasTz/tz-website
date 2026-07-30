@@ -3,13 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 import Reveal from "./Reveal";
-
-const thumbs = [
-  "tmb1.webp","tmb2.webp","tmb3.webp","tmb4.webp","tmb5.webp",
-  "tmb6.webp","tmb7.webp","tmb8.webp","tmb9.webp","tmb10.webp",
-  "tmb11.webp","tmb12.webp","tmb13.webp","tmb15.webp","tmb16.webp",
-  "tmb17.webp","tmb18.webp","tmb19.webp","tmb20.webp","tmb21.webp",
-];
+import { thumbs } from "./thumbs";
 
 export default function Thumbnails({ index = "02" }: { index?: string }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
