@@ -21,8 +21,8 @@ export default function Clients({ index = "04" }: { index?: string }) {
             Creators I&apos;ve <em className="italic">worked</em> with
           </h2>
           <p className="mt-4 max-w-xl text-(--color-fg-2)">
-            <strong className="text-(--color-fg)">100+ clients</strong> served — from channels with millions of subscribers
-            to billions of impressions, they trust my thumbnails to drive clicks.
+            <strong className="text-(--color-fg)">100+ clients</strong> served, from channels with millions of subscribers
+            to billions of impressions. They trust my thumbnails to drive clicks.
           </p>
         </div>
       </Reveal>

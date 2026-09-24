@@ -9,7 +9,7 @@ const cards = [
     featured: true,
     url: "https://www.adventuregen.ai/",
     img: "/projects/adventure-ai.webp",
-    hoverNote: "Founder — I built the product, the brand and the code.",
+    hoverNote: "Founder. I designed and developed the product end-to-end.",
     badgeNote: "NVIDIA Inception member",
   },
   {
@@ -18,7 +18,7 @@ const cards = [
     title: "Motoriza",
     url: "https://www.motorizacnh.com/",
     img: "/projects/motoriza.webp",
-    hoverNote: "Designed and built end-to-end — app and landing page.",
+    hoverNote: "Designed and built end-to-end: app and landing page.",
   },
   {
     span: "",
@@ -26,12 +26,12 @@ const cards = [
     title: "Adventure Studio",
     url: "https://www.adventurectr.com/",
     img: "/projects/adventure-studio.webp",
-    hoverNote: "The studio's own site — design, copy and code.",
+    hoverNote: "The studio's own website: interface design and development.",
   },
   {
     span: "",
     badge: "Client portfolio",
-    title: "Lowl — Harrison",
+    title: "Lowl · Harrison",
     url: "https://lowl-portfolio.vercel.app/",
     img: "/projects/lowl.webp",
     hoverNote: "Designed and coded for thumbnail designer Harrison.",
@@ -63,7 +63,7 @@ export default function Projects({ index = "05" }: { index?: string }) {
             Projects
           </h2>
           <p className="mt-4 max-w-xl text-(--color-fg-2)">
-            Products and sites I&apos;ve built — live on the internet. Hover to see my role.
+            Products and sites I&apos;ve built, live on the internet. Hover to see my role.
           </p>
         </div>
       </Reveal>
@@ -80,7 +80,7 @@ export default function Projects({ index = "05" }: { index?: string }) {
               <div className="relative aspect-[16/9] flex-1 overflow-hidden">
                 <Image
                   src={c.img}
-                  alt={`${c.title} — website preview`}
+                  alt={`${c.title} website preview`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover object-top transition-all duration-700 ease-out group-hover:scale-[1.05] group-hover:blur-[2px]"

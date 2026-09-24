@@ -8,13 +8,13 @@ import Reveal from "./Reveal";
 const items = {
   dev: [
     "Web Apps",
+    "Next.js",
     "Mobile Apps",
+    "React Native",
     "Landing Pages",
-    "Adventure AI",
-    "Integrations",
-    "Logos",
-    "Branding",
-    "AI Products",
+    "TypeScript",
+    "API Integrations",
+    "Google Cloud",
   ],
   thumbnails: [
     "Thumbnails",

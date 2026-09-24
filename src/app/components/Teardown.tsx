@@ -15,9 +15,15 @@ import Reveal from "./Reveal";
 type Teardown = {
   id: string;
   channel: string;
-  videoUrl: string;
   original: { img: string; title: string };
   mine: { img: string; title?: string };
+  /**
+   * NOT RENDERED. Both fields were pulled off the page so the pair of images has
+   * to carry the argument on its own: `videoUrl` was a "watch the original" link
+   * and `notes` was a written breakdown of each case. Kept because they are the
+   * source and the thinking behind every teardown, and cost nothing to hold.
+   */
+  videoUrl: string;
   notes: string[];
 };
 
@@ -35,9 +41,9 @@ const teardowns: Teardown[] = [
       title: "Making a Slow Car Fast with $3000",
     },
     notes: [
-      "The original spends the thumbnail on the number the title already gives away — $2967 stamped next to “for under $3000”. Two slots, one idea.",
+      "The original spends the thumbnail on the number the title already gives away: $2967 stamped next to “for under $3000”. Two slots, one idea.",
       "So the price stays in the title, and the thumbnail takes the payoff the title can’t show: the result, and the part that buys it.",
-      "One number, one object, one arrow. That still reads in a sidebar at a third of the size — a crossed-out price and a callout bubble don’t.",
+      "One number, one object, one arrow. That still reads in a sidebar at a third of the size. A crossed-out price and a callout bubble don’t.",
     ],
   },
   {
@@ -50,7 +56,7 @@ const teardowns: Teardown[] = [
     },
     mine: { img: "/thumbnails/tmb22.webp" },
     notes: [
-      "The title promises destruction. The frame shows the car intact, mid-cruise, not a scratch on it — the one thing the video is about is missing from the image.",
+      "The title promises destruction. The frame shows the car intact, mid-cruise, not a scratch on it. The one thing the video is about is missing from the image.",
       "The title already works, so it stays. It was never the problem.",
       "The frame delivers it instead: the lighter, the fuel trail, the car already going up. Cause and effect in a single read.",
     ],
@@ -63,11 +69,14 @@ const teardowns: Teardown[] = [
       img: "/thumbnails/teardown/arcade-original.webp",
       title: "We got rid of junk by building an arcade in our room",
     },
-    mine: { img: "/thumbnails/tmb28.webp" },
+    mine: {
+      img: "/thumbnails/tmb28.webp",
+      title: "I Built An Arcade In My Room",
+    },
     notes: [
-      "The title sells a room reveal. The frame sells $3000 — the loudest thing in it is a number the title never mentions.",
+      "The title sells a room reveal. The frame sells $3000, and the loudest thing in it is a number the title never mentions.",
       "So the room becomes the subject and names itself inside the frame: the neon sign, the cabinets, the bed. You know what you’re getting before reading a word.",
-      "The reaction is pulled out at full scale and the door edge frames it as walking in — a face to read at any size, and a reveal to step into.",
+      "The reaction is pulled out at full scale and the door edge frames it as walking in: a face to read at any size, and a reveal to step into.",
     ],
   },
   {
@@ -78,11 +87,32 @@ const teardowns: Teardown[] = [
       img: "/thumbnails/teardown/katana-original.webp",
       title: "The PERFECT Throw?! Glass Ball Vs Katana",
     },
-    mine: { img: "/thumbnails/tmb26.webp" },
+    mine: {
+      img: "/thumbnails/tmb26.webp",
+      title: "The Ultimate Katana Test",
+    },
     notes: [
       "The title names both objects, then the frame shows both objects. The image confirms the title instead of adding to it.",
-      "Mine drops the naming and keeps one word — impossible. The image carries the claim, the title carries the facts.",
+      "Mine names one object instead of two and stops grading the throw. The title sets the stakes, and the frame is what settles them.",
       "The hit is frozen at the split with the debris still travelling. The original lights the impact; this one shows it happening.",
+    ],
+  },
+  {
+    id: "trendy",
+    channel: "Trendy Treats",
+    videoUrl: "https://youtu.be/CQbRNZLMGCw",
+    original: {
+      img: "/thumbnails/teardown/trendy-original.webp",
+      title: "Jolly Rancher Knife Vs. Air Head Fork",
+    },
+    mine: {
+      img: "/thumbnails/tmb30.webp",
+      title: "I Made Her A Candy Knife!",
+    },
+    notes: [
+      "Five objects fight over the same frame: cleaver, candy spoon, gummy fork, giant spoon, the bins behind them. The title names two of them, and nothing in the image is bigger than anything else, so the eye lands nowhere.",
+      "“Vs.” is a spec sheet: two products, no stake. Mine makes it a person and a gift, and drops the brand names the image was never going to prove anyway.",
+      "One object, one question. The blades meet at the torn join, the word asks the only thing worth asking, and the arrow lands on the answer. The room behind is stripped back to the candy wall so nothing else competes.",
     ],
   },
 ];
@@ -123,7 +153,7 @@ function Card({
       <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-(--color-surface-2)">
         <Image
           src={img}
-          alt={`${label} — ${title}`}
+          alt={`${label}: ${title}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
@@ -157,65 +187,28 @@ function Card({
   );
 }
 
-// The pair plus its reasoning, shared by the inline sample and the dialog so the
-// two can never drift apart.
+// The pair itself, shared by the inline sample and the dialog so the two can
+// never drift apart.
 function Comparison({ t, priority }: { t: Teardown; priority?: boolean }) {
   return (
-    <>
-      <div className="grid gap-8 md:grid-cols-2 md:gap-6">
-        <Card
-          img={t.original.img}
-          title={t.original.title}
-          channel={t.channel}
-          label="Original"
-          priority={priority}
-        />
-        <Card
-          img={t.mine.img}
-          title={t.mine.title ?? t.original.title}
-          titleUnchanged={!t.mine.title}
-          channel={t.channel}
-          label="My version"
-          accent
-          priority={priority}
-        />
-      </div>
-
-      <div className="mt-8 grid gap-6 border-t border-(--color-border) pt-6 md:grid-cols-[1fr_1.4fr] md:gap-8">
-        <div className="flex flex-col gap-3">
-          <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-(--color-accent-warm)">
-            What changed
-          </span>
-          <a
-            href={t.videoUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="group inline-flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-(--color-muted) transition-colors hover:text-(--color-fg)"
-          >
-            Watch the original
-            <svg
-              width="11"
-              height="11"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            >
-              <path d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </a>
-        </div>
-
-        <div className="space-y-3">
-          {t.notes.map((n) => (
-            <p key={n} className="leading-relaxed text-(--color-fg-2)">
-              {n}
-            </p>
-          ))}
-        </div>
-      </div>
-    </>
+    <div className="grid gap-8 md:grid-cols-2 md:gap-6">
+      <Card
+        img={t.original.img}
+        title={t.original.title}
+        channel={t.channel}
+        label="Original"
+        priority={priority}
+      />
+      <Card
+        img={t.mine.img}
+        title={t.mine.title ?? t.original.title}
+        titleUnchanged={!t.mine.title}
+        channel={t.channel}
+        label="My version"
+        accent
+        priority={priority}
+      />
+    </div>
   );
 }
 
@@ -257,7 +250,7 @@ export default function Teardown({ index = "04" }: { index?: string }) {
               Same video, sharper <em className="italic">promise</em>
             </h2>
             <p className="max-w-md text-(--color-fg-2)">
-              Real videos, re-pitched. Not a redesign for the sake of it — a{" "}
+              Real videos, re-pitched. Not a redesign for the sake of it, but a{" "}
               <strong className="text-(--color-fg)">different idea</strong> about what the title
               and the thumbnail should each be doing.
             </p>
@@ -271,20 +264,22 @@ export default function Teardown({ index = "04" }: { index?: string }) {
 
       {rest > 0 && (
         <Reveal>
-          <div className="mt-14 flex flex-col items-center gap-3 border-t border-(--color-border) pt-10">
+          {/* Four of the five cases live behind this button, so it is the most
+              important thing in the section after the pair itself. Solid fill
+              rather than an outline: on this background an outlined pill reads as
+              a footnote. The "01 / 05" counter that used to sit under it is gone,
+              since it only repeated the number already in the label. */}
+          <div className="mt-14 flex flex-col items-center border-t border-(--color-border) pt-10">
             <button
               type="button"
               onClick={() => setOpen(0)}
-              className="group inline-flex items-center gap-3 rounded-full border border-(--color-fg)/30 px-6 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-(--color-fg) transition-colors hover:bg-(--color-fg) hover:text-(--color-bg)"
+              className="group inline-flex items-center gap-3 rounded-full bg-(--color-fg) px-8 py-4 text-base font-medium text-(--color-bg) transition-transform hover:-translate-y-0.5"
             >
               See all {teardowns.length} teardowns
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7" />
               </svg>
             </button>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-(--color-muted)">
-              01 / {String(teardowns.length).padStart(2, "0")}
-            </p>
           </div>
         </Reveal>
       )}
@@ -293,7 +288,7 @@ export default function Teardown({ index = "04" }: { index?: string }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Teardown ${open + 1} of ${teardowns.length} — ${teardowns[open].channel}`}
+          aria-label={`Teardown ${open + 1} of ${teardowns.length}: ${teardowns[open].channel}`}
           onClick={() => setOpen(null)}
           className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-sm md:items-center"
         >

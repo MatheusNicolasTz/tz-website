@@ -43,14 +43,17 @@ export default function Thumbnails({ index = "02" }: { index?: string }) {
             </h2>
           </div>
           <p className="max-w-md text-(--color-fg-2)">
-            Over <strong className="text-(--color-fg)">500M+ YouTube views</strong> driven — from
+            Over <strong className="text-(--color-fg)">500M+ YouTube views</strong> driven, from
             Like Nastya (130M+ subs) to Khalid Al Ameri, Corey Funk, Koreannosh, and Hudson Matter.
           </p>
         </div>
       </Reveal>
 
       <Reveal>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+        {/* Three across on phones: 28 tiles at two across ran two and a half
+            screens tall, and a thumbnail that stops working small is not much of
+            a thumbnail. Tap still opens each one full size. */}
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:grid-cols-4">
           {thumbs.map((file, i) => (
             <button
               key={file}
@@ -61,9 +64,9 @@ export default function Thumbnails({ index = "02" }: { index?: string }) {
             >
               <Image
                 src={`/thumbnails/${file}`}
-                alt={`Thumbnail ${i + 1} — TzDev`}
+                alt={`Thumbnail ${i + 1} by Matthew`}
                 fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 1024px) 33vw, 25vw"
                 className="object-cover transition-all duration-[700ms] ease-out group-hover:scale-[1.08] group-hover:blur-[2px]"
                 priority={i < 4}
               />
@@ -102,7 +105,7 @@ export default function Thumbnails({ index = "02" }: { index?: string }) {
               Featured in · Unlayered
             </span>
             <span className="font-serif text-2xl leading-tight text-(--color-fg) md:text-3xl">
-              Issue #40 — TZ{" "}
+              Issue #40 · TZ{" "}
               <em className="italic text-(--color-fg-2)">· thumbnail breakdown &amp; workflow</em>
             </span>
           </div>
@@ -163,7 +166,7 @@ export default function Thumbnails({ index = "02" }: { index?: string }) {
             <Image
               key={thumbs[activeIndex]}
               src={`/thumbnails/${thumbs[activeIndex]}`}
-              alt={`Thumbnail ${activeIndex + 1} — TzDev`}
+              alt={`Thumbnail ${activeIndex + 1} by Matthew`}
               fill
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-contain"

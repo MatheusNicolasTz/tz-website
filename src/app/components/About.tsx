@@ -23,9 +23,9 @@ export default function About({ index = "06" }: { index?: string }) {
         <Reveal delay={120}>
           <div className="space-y-5 text-lg leading-relaxed text-(--color-fg-2)">
             <p>
-              I&apos;m <strong className="text-(--color-fg)">Matheus Nicolas</strong>, but you can call me{" "}
-              <strong className="text-(--color-fg)">TzDev</strong>. I&apos;m <strong className="text-(--color-fg)">23</strong> and
-              I mix design and code to turn ideas into real products.
+              I&apos;m <strong className="text-(--color-fg)">Matthew</strong>. I&apos;m{" "}
+              <strong className="text-(--color-fg)">23</strong> and I mix design and code to turn
+              ideas into real products.
             </p>
             <p>
               My thumbnails have driven over <strong className="text-(--color-fg)">500M YouTube views</strong> for top creators
@@ -33,13 +33,14 @@ export default function About({ index = "06" }: { index?: string }) {
               Corey Funk, Koreannosh, and Hudson Matter.
             </p>
             <p>
-              Right now I&apos;m building <strong className="text-(--color-fg)">Adventure AI</strong> and shipping
-              <strong className="text-(--color-fg)"> web apps and mobile apps</strong> end-to-end — integrating APIs,
-              Google Cloud and whatever the product needs — alongside thumbnails, logos and landing pages.
+              Right now I&apos;m building <strong className="text-(--color-fg)">Adventure AI</strong>, now at{" "}
+              <strong className="text-(--color-fg)">49K users</strong>, and shipping
+              <strong className="text-(--color-fg)"> web apps and mobile apps</strong> end-to-end: APIs,
+              Google Cloud and whatever the product needs, alongside thumbnails, logos and landing pages.
             </p>
             <p>
               On the AI side, I <strong className="text-(--color-fg)">fine-tune pre-trained models</strong> and run
-              advanced workflows in <strong className="text-(--color-fg)">ComfyUI</strong> — building custom pipelines for
+              advanced workflows in <strong className="text-(--color-fg)">ComfyUI</strong>, building custom pipelines for
               image generation, identity and style transfer.
             </p>
             <p>

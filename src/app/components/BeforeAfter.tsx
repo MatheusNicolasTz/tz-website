@@ -16,12 +16,12 @@ const src = (file: string) =>
 // frame for most pairs but the final for "iman". Always open both files and check
 // before wiring up a new pair; don't infer it from the filename.
 const pairs = [
-  { id: "elon", label: "Elon — $1 Trillion", client: "News / Finance", before: "Elonv2.webp", after: "Elon.webp" },
+  { id: "elon", label: "Elon · $1 Trillion", client: "News / Finance", before: "Elonv2.webp", after: "Elon.webp" },
   { id: "baseball", label: "Baseball Cannon", client: "Tech / Experiment", before: "Baseballv2.webp", after: "Baseball.webp" },
   { id: "couchlock", label: "Couch Lock News", client: "Documentary", before: "CouchLockv2.webp", after: "CouchLock.webp" },
-  { id: "coreyfunk", label: "Corey Funk — Waterpark", client: "Corey Funk", before: "coreyfunkv2.webp", after: "coreyfunk.webp" },
-  { id: "coreyfunk2", label: "Corey Funk — Truck Bed Pool", client: "Corey Funk", before: "coreyfunk2v2.webp", after: "coreyfunk2.webp" },
-  { id: "iman", label: "Iman — 90 Days", client: "Iman", before: "iman.webp", after: "imanv2.webp" },
+  { id: "coreyfunk", label: "Corey Funk · Waterpark", client: "Corey Funk", before: "coreyfunkv2.webp", after: "coreyfunk.webp" },
+  { id: "coreyfunk2", label: "Corey Funk · Truck Bed Pool", client: "Corey Funk", before: "coreyfunk2v2.webp", after: "coreyfunk2.webp" },
+  { id: "iman", label: "Iman · 90 Days", client: "Iman", before: "iman.webp", after: "imanv2.webp" },
 ];
 
 export default function BeforeAfter({ index = "03" }: { index?: string }) {
@@ -96,7 +96,7 @@ export default function BeforeAfter({ index = "03" }: { index?: string }) {
             </h2>
           </div>
           <p className="max-w-md text-(--color-fg-2)">
-            Drag the handle to see the difference. Same footage, same idea — what changes is{" "}
+            Drag the handle to see the difference. Same footage, same idea. What changes is{" "}
             <strong className="text-(--color-fg)">contrast, focus, and story</strong>.
           </p>
         </div>
@@ -117,7 +117,7 @@ export default function BeforeAfter({ index = "03" }: { index?: string }) {
           <Image
             key={`${pair.id}-after`}
             src={src(pair.after)}
-            alt={`${pair.label} — final thumbnail`}
+            alt={`${pair.label}, final thumbnail`}
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"
             className="object-cover"
@@ -133,7 +133,7 @@ export default function BeforeAfter({ index = "03" }: { index?: string }) {
             <Image
               key={`${pair.id}-before`}
               src={src(pair.before)}
-              alt={`${pair.label} — original frame`}
+              alt={`${pair.label}, original frame`}
               fill
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"

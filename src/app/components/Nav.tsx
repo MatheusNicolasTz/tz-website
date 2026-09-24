@@ -5,30 +5,35 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+// Four links, same density as the thumbnails side. Keep it to four: a fifth item
+// starts crowding the toggle on smaller laptops.
 const devLinks = [
-  { href: "/#services", label: "Services" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#brand", label: "Brand" },
-  { href: "/#about", label: "About" },
+  { href: "/dev#services", label: "Services" },
+  { href: "/dev#projects", label: "Projects" },
+  { href: "/dev#about", label: "About" },
+  { href: "/dev#contact", label: "Contact" },
 ];
 
 const thumbnailLinks = [
-  { href: "/thumbnails#strategy", label: "Strategy" },
+  { href: "/thumbnails#strategy", label: "Method" },
   { href: "/thumbnails#thumbnails", label: "Portfolio" },
   { href: "/thumbnails#before-after", label: "Before / After" },
   { href: "/thumbnails#teardown", label: "Teardown" },
-  { href: "/thumbnails#clients", label: "Clients" },
 ];
 
+// Use explicit routes because the home page redirects to /thumbnails.
 const modes = [
-  { href: "/", label: "Dev" },
   { href: "/thumbnails", label: "Thumbnails" },
+  { href: "/dev", label: "Dev" },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
   const isThumbnails = pathname.startsWith("/thumbnails");
   const links = isThumbnails ? thumbnailLinks : devLinks;
+
+  // Each page closes with a different section, and only /dev still has #contact.
+  const chatHref = isThumbnails ? "#hire" : "#contact";
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -79,18 +84,18 @@ export default function Nav() {
           <a
             href="#top"
             className="flex items-center gap-2.5 text-(--color-fg)"
-            aria-label="TzDev — home"
+            aria-label="Matthew home"
           >
             <Image
               src="/logo.png"
-              alt="TzDev"
+              alt="Matthew"
               width={36}
               height={36}
               priority
               className="h-9 w-9 object-contain"
             />
             <span className="hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-(--color-muted) sm:inline">
-              TzDev
+              Matthew
             </span>
           </a>
 
@@ -110,7 +115,7 @@ export default function Nav() {
         </nav>
 
         <a
-          href="#contact"
+          href={chatHref}
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-(--color-fg) px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--color-bg) transition-transform hover:-translate-y-px"
         >
           Let&apos;s chat
@@ -134,7 +139,7 @@ export default function Nav() {
       {open && (
         <div className="border-t border-(--color-border) bg-(--color-bg)/95 px-6 py-4 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1">
-            {[...links, { href: "#contact", label: "Contact" }].map((l) => (
+            {(isThumbnails ? [...links, { href: chatHref, label: "Contact" }] : links).map((l) => (
               <a
                 key={l.href}
                 href={l.href}

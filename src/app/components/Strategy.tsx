@@ -61,7 +61,7 @@ export default function Strategy({ index = "01" }: { index?: string }) {
         <div className="mb-12 border-t border-(--color-border) pt-6">
           <div className="flex items-baseline justify-between font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-(--color-muted)">
             <span>({index})</span>
-            <span>Strategy</span>
+            <span>Method</span>
           </div>
           <div className="mt-8 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-2xl font-serif text-6xl leading-[0.95] tracking-tight text-(--color-fg) md:text-8xl">

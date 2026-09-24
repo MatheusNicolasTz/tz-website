@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 :root {
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
   --color-bg: #0e0d0b;
   --color-bg-2: #14120f;
   --color-surface: #181613;
@@ -131,6 +134,59 @@ body {
 @keyframes wordIn {
   from { opacity: 0; transform: translateY(0.35em) skewY(3deg); }
   to { opacity: 1; transform: translateY(0) skewY(0); }
+}
+
+/* The "yes" payoff (HireGate): the section answers in the grammar of the work
+   itself. Heavy caps, a stroke and an arrow, crashing into an otherwise quiet
+   editorial page. paint-order keeps the stroke behind the fill so the letters
+   stay fat instead of being eaten from the edges inward. */
+.thumb-caps {
+  color: #ffd21e;
+  -webkit-text-stroke: 0.11em #000;
+  paint-order: stroke fill;
+  text-shadow: 0 0.05em 0 rgba(0, 0, 0, 0.85);
+}
+
+@keyframes thumbSlam {
+  0% { opacity: 0; transform: scale(1.65) rotate(-7deg); }
+  60% { opacity: 1; transform: scale(0.95) rotate(1.5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-2deg); }
+}
+.thumb-slam { animation: thumbSlam 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+
+@keyframes arrowIn {
+  from { opacity: 0; transform: translateY(-26px) rotate(-24deg); }
+  to { opacity: 1; transform: translateY(0) rotate(-9deg); }
+}
+.thumb-arrow { animation: arrowIn 0.4s 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.15) both; }
+
+/* "No" button shatter (HireGate). Three clipped copies of the button stacked on
+   top of it, each thrown off in its own direction once the real button is hit. */
+.shard {
+  animation-duration: 0.9s;
+  animation-timing-function: cubic-bezier(0.4, 0.1, 0.7, 1);
+  animation-fill-mode: forwards;
+}
+.shard--a { animation-name: shardA; }
+.shard--b { animation-name: shardB; }
+.shard--c { animation-name: shardC; }
+
+@keyframes shardA {
+  to { transform: translate(-22px, 54px) rotate(-26deg); opacity: 0; }
+}
+@keyframes shardB {
+  to { transform: translate(3px, 66px) rotate(10deg); opacity: 0; }
+}
+@keyframes shardC {
+  to { transform: translate(26px, 58px) rotate(30deg); opacity: 0; }
+}
+
+/* The jokes still land without the motion: the button just goes, and the payoff
+   is simply there. */
+@media (prefers-reduced-motion: reduce) {
+  .shard { animation-duration: 0.01ms; }
+  .thumb-slam,
+  .thumb-arrow { animation-duration: 0.01ms; animation-delay: 0s; }
 }
 
 /* Custom cursor */

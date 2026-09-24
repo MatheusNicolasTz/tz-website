@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "TzDev — Matheus Nicolas. 500M+ YouTube views driven.";
+export const alt = "Matthew. Thumbnails & Development. Welcome to my desktop.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -37,7 +37,7 @@ export default async function Image() {
               fontWeight: 600,
             }}
           >
-            TzDev · Portfolio
+            Matthew · Portfolio
           </div>
         </div>
 
@@ -55,8 +55,10 @@ export default async function Image() {
             fontWeight: 500,
           }}
         >
-          <span>Matheus</span>
-          <span style={{ fontStyle: "italic", color: "#4a4530" }}>Nicolas</span>
+          {/* Two lines, so the surname that used to sit under the name is now
+              what the name is for. */}
+          <span>Matthew</span>
+          <span style={{ fontStyle: "italic", color: "#4a4530", fontSize: 66 }}>Thumbnails & Development</span>
         </div>
 
         {/* subtitle */}
@@ -70,7 +72,7 @@ export default async function Image() {
             display: "flex",
           }}
         >
-          Thumbnails, logos &amp; products — 500M+ YouTube views for top creators.
+          A little design. A little code. Welcome to my desktop.
         </div>
 
         {/* bottom row */}
@@ -90,7 +92,7 @@ export default async function Image() {
           }}
         >
           <div style={{ display: "flex" }}>Available · 2026</div>
-          <div style={{ display: "flex" }}>Adventure AI · Web Apps</div>
+          <div style={{ display: "flex" }}>Thumbnails · Dev</div>
         </div>
       </div>
     ),

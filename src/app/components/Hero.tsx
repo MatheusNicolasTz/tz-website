@@ -7,30 +7,33 @@ type HeroProps = {
 
 const copy = {
   dev: {
-    pre: "I am a",
-    big: "Developer",
-    small: <>&amp; <span className="text-(--color-accent-warm)">designer</span>.</>,
+    pre: "I build",
+    big: "Products",
+    small: <>from idea to <span className="text-(--color-accent-warm)">launch</span>.</>,
     lead: (
       <>
-        I build <em className="font-serif italic">web apps</em> and mobile apps end-to-end —
-        currently shipping <strong className="font-medium text-(--color-fg)">Adventure AI</strong>, an
-        NVIDIA Inception member.
+        <strong className="font-medium text-(--color-fg)">Websites, web apps and mobile apps.</strong>{" "}
+        I design the interface, write the code and bring your product to life.
       </>
     ),
-    cta: { href: "#projects", label: "View projects" },
+    cta: { href: "#projects", label: "See the projects" },
+    // Each page closes with a different section; only /dev still has #contact.
+    chat: "#contact",
   },
   thumbnails: {
     pre: "I design",
     big: "Thumbnails",
     small: <>that <span className="text-(--color-accent-warm)">earn</span> the click.</>,
+    // The headline already says what I do, so the lead only carries what it
+    // can't: the proof, and who the work is for.
     lead: (
       <>
-        I design <em className="font-serif italic">YouTube thumbnails</em> and the strategy behind
-        them — for creators who treat CTR as a number, not a vibe.{" "}
-        <strong className="font-medium text-(--color-fg)">500M+ views</strong> driven so far.
+        <strong className="font-medium text-(--color-fg)">500M+ views</strong> driven for creators
+        who treat CTR as a number, not a vibe.
       </>
     ),
     cta: { href: "#strategy", label: "How I think" },
+    chat: "#hire",
   },
 };
 
@@ -58,7 +61,7 @@ export default function Hero({ mode = "thumbnails" }: HeroProps) {
         </h1>
 
         <div className="relative mt-8 flex flex-col items-center gap-6">
-          <p className="max-w-xl text-base leading-relaxed text-(--color-fg-2) md:text-lg">
+          <p className="max-w-xl text-balance text-base leading-relaxed text-(--color-fg-2) md:text-lg">
             {c.lead}
           </p>
 
@@ -73,7 +76,7 @@ export default function Hero({ mode = "thumbnails" }: HeroProps) {
               </svg>
             </a>
             <a
-              href="#contact"
+              href={c.chat}
               className="inline-flex items-center gap-2 rounded-full border border-(--color-fg)/30 bg-transparent px-6 py-3 text-sm font-medium text-(--color-fg) transition-colors hover:bg-(--color-fg) hover:text-(--color-bg)"
             >
               Let&apos;s chat

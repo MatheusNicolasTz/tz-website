@@ -24,7 +24,7 @@ export default function Contact({ index = "07" }: { index?: string }) {
 
         <Reveal delay={160}>
           <p className="mx-auto mt-8 max-w-lg text-center text-(--color-fg-2)">
-            Hit me up for your logo, your thumbnail, your landing page — or your next product.
+            A website, a web app or a mobile app. Tell me what you&apos;re building.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">

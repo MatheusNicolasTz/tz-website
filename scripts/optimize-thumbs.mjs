@@ -11,6 +11,10 @@ const outDir = "c:/Users/mathe/Downloads/Tz-Website/public/thumbnails";
 // Thumbnails.tsx. Never reuse a number for different art: the grid serves these
 // under a plain, unhashed name, so a recycled name keeps serving the old image
 // from the next/image, browser and CDN caches.
+//
+// An output may name a subfolder (teardown/x-original.webp) — that is where the
+// third-party originals in Teardown.tsx live, kept out of the tmbN sequence
+// because they are somebody else's art, not portfolio work.
 const files = [
   ["Unspeakable.jpg", "tmb22.webp"],
   ["Donutv3.jpg", "tmb23.webp"],
@@ -20,6 +24,8 @@ const files = [
   ["Ishan6.png", "tmb27.webp"],
   ["Ishan9.png", "tmb28.webp"],
   ["Patchbay-Media-v3.jpg", "tmb29.webp"],
+  ["Trendy-Treats5.jpg", "tmb30.webp"],
+  ["CQbRNZLMGCw-HD.jpg", "teardown/trendy-original.webp"],
 ];
 
 for (const [src, out] of files) {

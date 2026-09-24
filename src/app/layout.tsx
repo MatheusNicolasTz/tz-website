@@ -1,54 +1,38 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "TzDev — Matheus Nicolas | Full-Stack Developer & Designer",
+  title: "Matthew | Thumbnails & Development",
   description:
-    "Matheus Nicolas (TzDev) — designer and developer. 500M+ YouTube views driven through thumbnails for Like Nastya, Khalid Al Ameri, Corey Funk, Koreannosh, Hudson Matter and more. Building Adventure AI and other products.",
+    "Explore Matthew's desktop. YouTube thumbnails with 500M+ views, custom websites, web apps and mobile development. Design and code, all in one place.",
   keywords: [
-    "TzDev",
+    "Matthew",
+    // The legal name stays in the keywords only, so anyone searching it still
+    // lands here without it appearing anywhere on the page.
     "Matheus Nicolas",
     "YouTube thumbnail designer",
     "thumbnail design",
-    "Adventure AI",
+    "thumbnail strategy",
     "Like Nastya thumbnails",
-    "landing page",
-    "logo design",
+    "YouTube CTR",
+    "web development",
+    "app development",
+    "Next.js developer",
   ],
-  authors: [{ name: "Matheus Nicolas" }],
-  creator: "Matheus Nicolas",
+  authors: [{ name: "Matthew" }],
+  creator: "Matthew",
   openGraph: {
-    title: "TzDev — Matheus Nicolas",
+    title: "Matthew | Thumbnails & Development",
     description:
-      "500M+ YouTube views driven. Thumbnails, logos, landing pages, and Adventure AI.",
+      "A little design. A little code. Explore my thumbnails, websites and apps in an interactive desktop portfolio.",
     type: "website",
     locale: "en_US",
     images: ["/logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TzDev — Matheus Nicolas",
-    description: "500M+ YouTube views driven. Designer & developer.",
+    title: "Matthew | Thumbnails & Development",
+    description: "YouTube thumbnails, websites and apps. Welcome to my desktop.",
     images: ["/logo.png"],
   },
 };
@@ -61,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
+      className="antialiased"
     >
       <body className="flex min-h-screen flex-col bg-(--color-bg) text-(--color-fg) font-sans selection:bg-(--color-fg) selection:text-(--color-bg)">
         {children}

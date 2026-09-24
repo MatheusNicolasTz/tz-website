@@ -10,7 +10,7 @@ const services = [
       </svg>
     ),
     title: "Web Apps",
-    desc: "I code apps and websites end-to-end — from idea to shipped product, fast and intentional.",
+    desc: "I code apps and websites end-to-end, from idea to shipped product, fast and intentional.",
   },
   {
     icon: (
@@ -20,7 +20,7 @@ const services = [
       </svg>
     ),
     title: "Mobile Apps",
-    desc: "Cross-platform iOS and Android apps. From wireframe to App Store — performant and polished.",
+    desc: "Cross-platform iOS and Android apps. From wireframe to App Store, performant and polished.",
   },
   {
     icon: (
@@ -35,20 +35,11 @@ const services = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
-        <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1 3-6z" />
-      </svg>
-    ),
-    title: "Logo & Identity",
-    desc: "Modern, memorable visual identities for brands that actually want to stand out.",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
         <path d="M17.5 19a4.5 4.5 0 1 0-.9-8.9 6 6 0 0 0-11.4 1.8A3.5 3.5 0 0 0 6 19h11.5z" />
       </svg>
     ),
     title: "Cloud & Integrations",
-    desc: "Google Cloud, third-party APIs, auth, payments — I wire everything together so the product just works.",
+    desc: "Google Cloud, third-party APIs, auth, payments. I wire everything together so the product just works.",
   },
 ];
 
@@ -65,12 +56,12 @@ export default function Services({ index = "01" }: { index?: string }) {
             Services
           </h2>
           <p className="mt-5 max-w-xl text-(--color-fg-2)">
-            From idea to shipped product — web, mobile, backend, and the brand around it.
+            From idea to shipped product: websites, mobile apps, backends and integrations.
           </p>
         </div>
       </Reveal>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {services.map((s, i) => (
           <Reveal key={s.title} delay={i * 80}>
             <article className="group relative h-full overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) p-7 transition-all hover:-translate-y-1 hover:border-(--color-border-strong) hover:bg-(--color-surface-2)">

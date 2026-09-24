@@ -1,0 +1,67 @@
+﻿import puppeteer from 'puppeteer-core';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+const executablePath = ['C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', 'C:/Program Files/Google/Chrome/Application/chrome.exe'].find(p => fs.existsSync(p));
+const browser = await puppeteer.launch({ executablePath, headless: true, args: ['--no-sandbox', '--disable-gpu', '--disable-extensions'] });
+try {
+  const page = await browser.newPage();
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.setViewport({width:1440,height:960});
+  const base = process.argv[2] ?? 'http://localhost:3000';
+  await page.goto(base, {waitUntil:'networkidle2', timeout:60000});
+  await page.waitForSelector('.desktop');
+  await page.screenshot({path:path.join(os.tmpdir(),'matthew-desktop.png')});
+  assert.equal(await page.title(), 'Matthew | Thumbnails & Development');
+  assert.equal(await page.$('[role="dialog"]'), null);
+  await page.click('[aria-label="Open Thumbnails"]');
+  await page.waitForSelector('.desktop-gallery');
+  assert.equal(await page.$$eval('.desktop-gallery button', buttons => buttons.length),28);
+  await page.click('[aria-label="Preview thumbnail 1"]');
+  await page.waitForSelector('.desktop-preview');
+  await page.keyboard.press('ArrowRight');
+  assert.match(await page.$eval('.desktop-preview', el => el.textContent),/2 \/ 28/);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.$('[role="dialog"]'),null);
+  await page.click('[aria-label="Open Development"]');
+  await page.waitForSelector('.desktop-projects');
+  assert.equal(await page.$$eval('.desktop-projects a', links => links.length),5);
+  await page.click('[aria-label="Minimize window"]');
+  assert.equal(await page.$('[role="dialog"]'),null);
+  await page.click('[aria-label="Restore Development"]');
+  await page.waitForSelector('.desktop-projects');
+  await page.click('[aria-label="Maximize window"]');
+  assert.ok(await page.$('.desktop-window--maximized'));
+  await page.click('[aria-label="Restore window"]');
+  const titlebar = await page.$('.desktop-titlebar');
+  const rect = await titlebar.boundingBox();
+  await page.mouse.move(rect.x + rect.width / 2,rect.y + 20);
+  await page.mouse.down();
+  await page.mouse.move(rect.x + rect.width / 2 + 30,rect.y + 60,{steps:5});
+  await page.mouse.up();
+  assert.match(await page.$eval('.desktop-window',el=>el.style.getPropertyValue('--window-x')),/30px/);
+  await page.click('[aria-label="Close window"]');
+  await page.click('[aria-label="Change wallpaper mood"]');
+  assert.ok(await page.$('.desktop--warm'));
+  await page.click('[aria-label="Change wallpaper mood"]');
+  for (const route of ['thumbnails','dev']) {
+    await page.goto(`${base}/${route}`,{waitUntil:'networkidle2',timeout:60000});
+    await page.waitForSelector(route === 'dev' ? '.desktop-projects' : '.desktop-gallery');
+  }
+  await page.screenshot({path:path.join(os.tmpdir(),'matthew-dev.png')});
+  await page.setViewport({width:390,height:844,isMobile:true,hasTouch:true});
+  await page.goto(base,{waitUntil:'networkidle2',timeout:60000});
+  await page.screenshot({path:path.join(os.tmpdir(),'matthew-mobile.png')});
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth <= window.innerWidth),'Mobile page overflows horizontally');
+  await page.click('[aria-label="Open Contact"]');
+  await page.waitForSelector('.desktop-contact');
+  assert.equal(await page.$$eval('.desktop-contact a',links=>links.length),6);
+  await page.screenshot({path:path.join(os.tmpdir(),'matthew-mobile-contact.png')});
+  assert.ok(await page.evaluate(()=>document.querySelector('.desktop-window').getBoundingClientRect().right <= window.innerWidth),'Mobile window overflows');
+  assert.deepEqual(errors,[]);
+  console.log('PASS: desktop, folders, previews, keyboard, window controls, dragging, mood, routes, mobile and contact links.');
+  console.log('Screenshots:',os.tmpdir());
+} finally { await browser.close(); }
