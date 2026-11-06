@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { Roboto } from "next/font/google";
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode, type WheelEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, type WheelEvent } from "react";
 import { thumbs } from "./thumbs";
 import { contacts, isExternal } from "./contacts";
-import { designProjects, devProjects, profile, timeline, type PortfolioProject as Project } from "./portfolio-data";
+import { designProjects, profile, timeline, type PortfolioProject as Project } from "./portfolio-data";
+import VSCodeApp from "./VSCodeApp";
 import "./desktop.css";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
@@ -77,51 +78,6 @@ function AppIcon({ src, alt = "" }: { src: string; alt?: string }) {
   return <Image src={src} alt={alt} width={64} height={64} />;
 }
 
-function pascalCase(slug: string) {
-  return slug.split("-").map(part => part[0].toUpperCase() + part.slice(1)).join("");
-}
-
-function projectSlug(p: Project) {
-  return p.image ?? p.name.toLowerCase().replace(/\s+/g, "-");
-}
-function VSCodeApp({ projects, active, onSelect }: { projects: Project[]; active: number; onSelect: (index: number) => void }) {
-  const project = projects[active];
-  const codeLines: ReactNode[] = [
-    <span className="vsc-com" key="c1">{`// ${project.name} — ${project.type}`}</span>,
-    null,
-    <span key="c3"><span className="vsc-kw">export default function</span> <span className="vsc-fn">{pascalCase(projectSlug(project))}</span>() {"{"}</span>,
-    <span key="c4">&nbsp;&nbsp;<span className="vsc-kw">return</span> (</span>,
-    <span key="c5">&nbsp;&nbsp;&nbsp;&nbsp;<span className="vsc-tag">&lt;LiveSite</span> <span className="vsc-attr">description</span>=<span className="vsc-str">&quot;{project.description}&quot;</span> /&gt;</span>,
-    <span key="c6">&nbsp;&nbsp;);</span>,
-    <span key="c7">{"}"}</span>,
-  ];
-  return <div className="vscode" style={{ fontFamily: roboto.style.fontFamily }}>
-    <div className="vscode-activitybar">
-      <span className="is-active" aria-hidden="true"><Glyph name="grid" /></span>
-      <span aria-hidden="true"><Glyph name="search" /></span>
-      <span aria-hidden="true"><Glyph name="git" /></span>
-      <span aria-hidden="true"><Glyph name="extensions" /></span>
-    </div>
-    <div className="vscode-sidebar">
-      <p>EXPLORER</p>
-      <div className="vscode-folder">PORTFOLIO-PROJECTS</div>
-      {projects.map((p, i) => <button key={p.name} className={i === active ? "is-active" : ""} onClick={() => onSelect(i)}><span className="vscode-dot" />{projectSlug(p)}.tsx</button>)}
-    </div>
-    <div className="vscode-main">
-      <div className="vscode-tabs">{projects.map((p, i) => <button key={p.name} className={i === active ? "is-active" : ""} onClick={() => onSelect(i)}><span className="vscode-dot" />{projectSlug(p)}.tsx</button>)}</div>
-      <div className="vscode-split">
-        <pre className="vscode-code"><code>{codeLines.map((line, i) => <span className="vscode-line" key={i}><span className="vscode-ln">{i + 1}</span><span>{line}</span></span>)}</code></pre>
-        <div className="vscode-preview">
-          <div className="vscode-preview-bar"><Glyph name="arrow" /><span>{project.url.replace(/^https?:\/\//, "")}</span></div>
-          {project.image
-            ? <a href={project.url} target="_blank" rel="noreferrer noopener"><Image src={`/projects/${project.image}.webp`} alt={`${project.name} website`} width={640} height={400} sizes="(max-width: 700px) 90vw, 420px" /></a>
-            : <div className="vscode-preview-empty">Preview coming soon</div>}
-        </div>
-      </div>
-    </div>
-  </div>;
-}
-
 function PhotoshopApp({ thumbs, active, onSelect }: { thumbs: string[]; active: number; onSelect: (index: number) => void }) {
   const activeLayerRef = useRef<HTMLButtonElement | null>(null);
   useEffect(() => { activeLayerRef.current?.scrollIntoView({ block: "nearest" }); }, [active]);
@@ -185,7 +141,11 @@ function FigmaApp({ projects, active, onSelect }: { projects: Project[]; active:
         <button className="figma-nav figma-nav-prev" aria-label="Previous design" onClick={() => onSelect((active - 1 + projects.length) % projects.length)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 6-6 6 6 6" /></svg></button>
         <div>
           <div className="figma-frame-label">{project.name} — Desktop</div>
-          <a className="figma-frame" href={project.url} target="_blank" rel="noreferrer noopener"><Image src={`/projects/${project.image}.webp`} alt={`${project.name} design`} width={900} height={560} sizes="(max-width: 900px) 85vw, 560px" /></a>
+          <a className="figma-frame" href={project.url} target="_blank" rel="noreferrer noopener">
+            {project.video
+              ? <video key={project.video} src={`/projects/videos/${project.video}.mp4`} poster={`/projects/videos/${project.video}-poster.webp`} width={1280} height={800} autoPlay muted loop playsInline preload="metadata" aria-label={`${project.name} website in motion`} />
+              : <Image src={`/projects/${project.image}.webp`} alt={`${project.name} design`} width={900} height={560} sizes="(max-width: 900px) 85vw, 560px" />}
+          </a>
         </div>
         <button className="figma-nav figma-nav-next" aria-label="Next design" onClick={() => onSelect((active + 1) % projects.length)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6" /></svg></button>
       </div>
@@ -244,7 +204,6 @@ export default function Desktop({ initialView = null }: { initialView?: App | nu
     : [{ id: "youtube", minimized: false, maximized: false, x: 0, y: 0, z: 1 }]);
   const [clock, setClock] = useState("Welcome");
   const [musicOpen, setMusicOpen] = useState(false);
-  const [activeProject, setActiveProject] = useState(0);
   const [activeDesign, setActiveDesign] = useState(0);
   const [activeLayer, setActiveLayer] = useState(0);
   const opener = useRef<HTMLElement | null>(null);
@@ -366,13 +325,13 @@ export default function Desktop({ initialView = null }: { initialView?: App | nu
       </div>
     </section>
 
-    {windows.filter(w => !w.minimized).map(w => <section key={w.id} ref={el => { winRefs.current[w.id] = el; }} role="dialog" aria-label={titles[w.id]} tabIndex={-1} className={`desktop-window ${w.maximized ? "desktop-window--maximized" : ""}`} style={{ "--window-x": `${w.x}px`, "--window-y": `${w.y}px`, zIndex: w.z } as CSSProperties} onPointerDownCapture={() => bumpZ(w.id)}>
+    {windows.filter(w => !w.minimized).map(w => <section key={w.id} ref={el => { winRefs.current[w.id] = el; }} role="dialog" aria-label={titles[w.id]} tabIndex={-1} className={`desktop-window ${w.id === "dev" ? "desktop-window--dev" : ""} ${w.maximized ? "desktop-window--maximized" : ""}`} style={{ "--window-x": `${w.x}px`, "--window-y": `${w.y}px`, zIndex: w.z } as CSSProperties} onPointerDownCapture={() => bumpZ(w.id)}>
       <div className="desktop-titlebar" onPointerDown={event => startDrag(w.id, w.maximized, event)} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag}>
         <div className="desktop-controls"><button aria-label="Close window" onClick={() => closeWindow(w.id)}>×</button><button aria-label="Minimize window" onClick={() => minimizeWindow(w.id)}>−</button><button aria-label={w.maximized ? "Restore window" : "Maximize window"} onClick={() => toggleMaximize(w.id)}>+</button></div>
         <span>{titles[w.id]}</span><span className="desktop-window-owner">Matthew&apos;s desktop</span>
       </div>
       <div className={`desktop-window-body ${w.id === "dev" || w.id === "thumbnails" || w.id === "design" || w.id === "youtube" ? "desktop-window-body--app" : ""}`}>
-        {w.id === "dev" && <VSCodeApp projects={devProjects} active={activeProject} onSelect={setActiveProject} />}
+        {w.id === "dev" && <VSCodeApp onContact={() => open("contact")} />}
         {w.id === "thumbnails" && <PhotoshopApp thumbs={thumbs} active={activeLayer} onSelect={setActiveLayer} />}
         {w.id === "design" && <FigmaApp projects={designProjects} active={activeDesign} onSelect={setActiveDesign} />}
         {w.id === "youtube" && <YouTubeApp />}

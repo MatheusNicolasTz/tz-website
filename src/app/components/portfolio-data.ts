@@ -1,6 +1,7 @@
 export type PortfolioProject = {
   name: string;
   image?: string;
+  video?: string; // public/projects/videos/<video>.mp4 + <video>-poster.webp (site em movimento, fundo branco)
   type: string;
   url: string;
   description: string;
@@ -27,10 +28,10 @@ export const devProjects: PortfolioProject[] = [
 ];
 
 export const designProjects: PortfolioProject[] = [
-  { name: "Adventure AI", image: "adventure-ai", type: "AI web application", url: "https://www.adventuregen.ai/", description: "My main project. Designed and developed from interface to backend, end to end.", featured: true },
-  { name: "Clipping Hall of Fame", image: "clipping-hall-of-fame", type: "Content distribution platform", url: "https://www.clippinghalloffame.com/", description: "A platform that connects brands with clippers to distribute content and reach a wider audience." },
-  { name: "Lowl · Harrison", image: "lowl", type: "Portfolio website", url: "https://lowl-portfolio.vercel.app/", description: "A portfolio designed and coded for thumbnail designer Harrison." },
-  { name: "VivianPSD", image: "vivianpsd", type: "Portfolio website", url: "https://www.vivianpsd.com/", description: "A custom portfolio for thumbnail designer Vivian." },
+  { name: "Adventure AI", image: "adventure-ai", video: "adventure-ai", type: "AI web application", url: "https://www.adventuregen.ai/", description: "My main project. Designed and developed from interface to backend, end to end.", featured: true },
+  { name: "Clipping Hall of Fame", image: "clipping-hall-of-fame", video: "clipping-hall-of-fame", type: "Content distribution platform", url: "https://www.clippinghalloffame.com/", description: "A platform that connects brands with clippers to distribute content and reach a wider audience." },
+  { name: "Lowl · Harrison", image: "lowl", video: "lowl", type: "Portfolio website", url: "https://lowl-portfolio.vercel.app/", description: "A portfolio designed and coded for thumbnail designer Harrison." },
+  { name: "VivianPSD", image: "vivianpsd", video: "vivianpsd", type: "Portfolio website", url: "https://www.vivianpsd.com/", description: "A custom portfolio for thumbnail designer Vivian." },
 ];
 
 export const timeline = [
