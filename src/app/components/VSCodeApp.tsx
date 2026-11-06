@@ -379,8 +379,9 @@ export default function VSCodeApp({ onContact }: { onContact?: () => void }) {
   const editorRef = useRef<HTMLDivElement | null>(null);
   const size = useSize(rootRef);
   const reduced = useReducedMotion();
-  const [tabs, setTabs] = useState<FileId[]>(["readme"]);
-  const [active, setActive] = useState<FileId>("readme");
+  // opens on the featured project, with the README one tab away (dono, 06/11/2026: "deve começar em adventure-ai.tsx")
+  const [tabs, setTabs] = useState<FileId[]>(["readme", projects[0].slug]);
+  const [active, setActive] = useState<FileId>(projects[0].slug);
   const [folders, setFolders] = useState<Record<string, boolean>>({ projects: true, about: true });
   const [explorer, setExplorer] = useState(true);          // wide/medium: shown or collapsed (activity bar)
   const [drawer, setDrawer] = useState(false);             // compact: explorer as a drawer
